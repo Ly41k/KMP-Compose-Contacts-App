@@ -1,4 +1,4 @@
-package com.example.kmpcomposecontactsapp
+package com.example.kmpcomposecontactsapp.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
