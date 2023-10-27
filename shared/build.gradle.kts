@@ -44,7 +44,7 @@ kotlin {
             isStatic = true
         }
     }
-    
+
     sourceSets {
         val commonMain by getting {
             dependencies {
@@ -89,6 +89,13 @@ kotlin {
         val iosTest by getting {
             dependsOn(commonTest)
         }
+    }
+}
+
+sqldelight {
+    database("ContactDatabase") {
+        packageName = "com.example.kmpcomposecontactsapp.database"
+        sourceFolders = listOf("sqldelight")
     }
 }
 
