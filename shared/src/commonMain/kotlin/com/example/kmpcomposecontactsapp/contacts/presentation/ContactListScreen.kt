@@ -20,6 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.kmpcomposecontactsapp.contacts.domain.ContactItem
+import com.example.kmpcomposecontactsapp.contacts.presentation.components.AddContactSheet
 import com.example.kmpcomposecontactsapp.contacts.presentation.components.ContactListItem
 
 @Composable
@@ -28,7 +29,6 @@ fun ContactListScreen(
     newContact: ContactItem?,
     onEvent: (ContactListEvent) -> Unit
 ) {
-
     Scaffold(
         floatingActionButton = {
             FloatingActionButton(
@@ -65,4 +65,11 @@ fun ContactListScreen(
             }
         }
     }
+
+    AddContactSheet(
+        state = state,
+        newContact = newContact,
+        isOpen = state.isAddContactSheetOpen,
+        onEvent = onEvent
+    )
 }
