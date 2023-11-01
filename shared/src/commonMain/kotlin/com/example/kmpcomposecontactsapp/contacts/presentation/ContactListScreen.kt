@@ -21,7 +21,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.kmpcomposecontactsapp.contacts.domain.ContactItem
 import com.example.kmpcomposecontactsapp.contacts.presentation.components.AddContactSheet
+import com.example.kmpcomposecontactsapp.contacts.presentation.components.ContactDetailSheet
 import com.example.kmpcomposecontactsapp.contacts.presentation.components.ContactListItem
+import com.example.kmpcomposecontactsapp.contacts.presentation.components.RecentlyAddedContacts
 import com.example.kmpcomposecontactsapp.core.presentation.ImagePicker
 
 @Composable
@@ -52,6 +54,12 @@ fun ContactListScreen(
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             item {
+                RecentlyAddedContacts(
+                    contacts = state.recentlyAddedContacts,
+                    onClick = { onEvent(ContactListEvent.SelectContact(it)) }
+                )
+            }
+            item {
                 Text(
                     text = "My contacts (${state.contacts.size})",
                     modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp),
@@ -69,6 +77,12 @@ fun ContactListScreen(
             }
         }
     }
+
+    ContactDetailSheet(
+        isOpen = state.isSelectedContactSheetOpen,
+        selectedContact = state.selectedContact,
+        onEvent = onEvent
+    )
 
     AddContactSheet(
         state = state,
